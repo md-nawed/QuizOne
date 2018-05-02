@@ -17,15 +17,13 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:background="?attr/colorPrimary"
             android:elevation="4dp"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            tools:ignore="UnusedAttribute">
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         </android.support.v7.widget.Toolbar>
 
@@ -39,8 +37,7 @@
             android:backgroundTint="#FE067A"
             android:ems="10"
             android:hint="@string/username"
-            android:inputType="text"
-            tools:ignore="UnusedAttribute" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/email"
@@ -53,7 +50,7 @@
             android:ems="10"
             android:hint="@string/email"
             android:inputType="text"
-            tools:ignore="TextFields,UnusedAttribute" />
+            tools:ignore="TextFields" />
 
         <EditText
             android:id="@+id/content"
@@ -66,8 +63,7 @@
             android:ems="10"
             android:hint="@string/write_about_yourself"
             android:inputType="textLongMessage"
-            android:paddingBottom="35dp"
-            tools:ignore="UnusedAttribute" />
+            android:paddingBottom="35dp" />
 
         <Button
             android:id="@+id/button"

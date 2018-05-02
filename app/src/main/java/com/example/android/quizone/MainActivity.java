@@ -1,12 +1,16 @@
 package com.example.android.quizone;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,15 +19,23 @@ public class MainActivity extends AppCompatActivity {
     EditText email;
     EditText content;
 
+    Button button;
+
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         userName = findViewById(R.id.userName);
         email = findViewById(R.id.email);
         content = findViewById(R.id.content);
+        button = findViewById(R.id.button);
+
+        sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
         if (savedInstanceState != null) {
             String userNameValue = savedInstanceState.getString("username");
             String emailValue = savedInstanceState.getString("email");
@@ -34,6 +46,23 @@ public class MainActivity extends AppCompatActivity {
             content.setText(contentValue);
         }
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String userNameValue = userName.getText().toString();
+                String emailValue = email.getText().toString();
+                String contentValue = content.getText().toString();
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                editor.putString("name", userNameValue);
+                editor.putString("email", emailValue);
+                editor.putString("content", contentValue);
+                editor.commit();
+                Intent intent = new Intent(view.getContext(), DetailsActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -66,8 +95,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_details:
                 Intent intent = new Intent(this, DetailsActivity.class);
                 startActivity(intent);
-
-
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

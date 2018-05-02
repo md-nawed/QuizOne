@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Quiz One</string>
+    <string name="username">UserName</string>
+    <string name="email">Email</string>
+    <string name="write_about_yourself">Write about yourself</string>
+    <string name="next">next</string>
 </resources>
